@@ -8,6 +8,7 @@ public class WeatherData extends Subject {
     private double temperature;
     private double humidity;
     private double pressure;
+    private String pollution;
 
     public double getTemperature() {
         return temperature;
@@ -21,10 +22,13 @@ public class WeatherData extends Subject {
         return pressure;
     }
 
-    public void setMeasurement(double t, double h, double p) {
+    public String getPollotion() { return pollution; }
+
+    public void setMeasurement(double t, double h, double p, String pollution) {
         temperature = t;
         humidity = h;
         pressure = p;
+        this.pollution = pollution;
         notifyObservers();
     }
 }

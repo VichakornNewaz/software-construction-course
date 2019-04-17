@@ -20,10 +20,6 @@ public class InputUI {
             System.out.print("Pressure: ");
             double pressure = Double.parseDouble(in.nextLine());
 
-            // set new data, causing weatherData subject
-            // to "notify" all observers (via calling an update() method)
-            weatherData.setMeasurement(temp, humid, pressure);
-
             System.out.print("Wave Height: ");
             double height = Double.parseDouble(in.nextLine());
             oceanData.setWaveHeight(height);
@@ -31,6 +27,11 @@ public class InputUI {
             System.out.print("Wind: ");
             double wind = Double.parseDouble(in.nextLine());
             oceanData.setWindGust(wind);
+
+            System.out.print("Pollution: ");
+            String pollotion = in.nextLine();
+
+            weatherData.setMeasurement(temp, humid, pressure, pollotion);
         }
     }
 }

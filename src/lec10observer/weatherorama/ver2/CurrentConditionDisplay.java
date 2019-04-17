@@ -6,7 +6,7 @@ import java.awt.*;
 public class CurrentConditionDisplay implements Observer {
 
     private JFrame frame;
-    private JTextArea weatherArea, oceanArea;
+    private JTextArea weatherArea, oceanArea, pollutionArea;
 
     public CurrentConditionDisplay() {
         frame = new JFrame();
@@ -23,9 +23,14 @@ public class CurrentConditionDisplay implements Observer {
         oceanArea.setBackground(Color.CYAN);
         oceanArea.setText("Current Ocean:\n\n");
 
-        frame.setLayout(new GridLayout(2, 1));
+        pollutionArea = new JTextArea(100, 50);
+        pollutionArea.setBackground(Color.ORANGE);
+        pollutionArea.setText("Current Pollution:\n\n");
+
+        frame.setLayout(new GridLayout(3, 1));
         frame.add(weatherArea);
         frame.add(oceanArea);
+        frame.add(pollutionArea);
     }
 
     @Override
@@ -37,6 +42,7 @@ public class CurrentConditionDisplay implements Observer {
             weatherArea.append("Temperature = " + weatherData.getTemperature() + "\n");
             weatherArea.append("Humidity = " + weatherData.getHumidity() + "\n");
             weatherArea.append("Pressure = " + weatherData.getPressure() + "\n");
+            pollutionArea.append("Pollution = " + weatherData.getPollotion() + "\n");
         }
         if (data instanceof OceanData) {
             OceanData oceanData = (OceanData) data;
@@ -45,5 +51,8 @@ public class CurrentConditionDisplay implements Observer {
             oceanArea.append("Wave Height = " + oceanData.getWaveHeight() + "\n");
             oceanArea.append("Wind = " + oceanData.getWindGust() + "\n");
         }
+
+
+
     }
 }
